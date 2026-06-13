@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="favicon.png">
+<title>Privacy Policy | G's Shop Barber Shop Pomona, CA</title>
+<meta name="description" content="Privacy Policy for G's Shop Barber Shop in Pomona, CA. Learn how we handle your information.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://gshopbarbershop.com/privacy.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --gold: #cc1f1f;
+  --gold-light: #e63333;
+  --gold-dark: #9e1515;
+  --dark: #0a0a0a;
+  --dark-2: #111111;
+  --dark-3: #181818;
+  --dark-card: #1c1c1c;
+  --white: #ffffff;
+  --gray: #888888;
+  --light-gray: #cccccc;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Montserrat', Arial, sans-serif;
+  --script: 'Dancing Script', cursive;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--dark); color: var(--white); font-family: var(--sans); overflow-x: hidden; line-height: 1.6; }
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 22px 0; transition: all 0.4s ease; }
+nav.scrolled { background: rgba(10,10,10,0.97); padding: 13px 0; box-shadow: 0 4px 30px rgba(0,0,0,0.6); border-bottom: 1px solid rgba(204,31,31,0.15); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { display: flex; align-items: center; }
+.nav-logo-img { height: 50px; width: auto; filter: invert(1) hue-rotate(180deg); }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a { font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--light-gray); transition: color 0.3s; position: relative; }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta { padding: 10px 22px !important; background: var(--gold) !important; color: var(--white) !important; font-weight: 700 !important; clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%); transition: background 0.3s !important; }
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: var(--gold-light) !important; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { display: block; width: 26px; height: 2px; background: var(--gold); }
+
+/* MOB MENU */
+.mob-menu { display: none; position: fixed; inset: 0; background: rgba(10,10,10,0.98); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 28px; }
+.mob-menu.open { display: flex; }
+.mob-menu a { font-family: var(--serif); font-size: 1.8rem; font-weight: 700; color: var(--white); transition: color 0.3s; }
+.mob-menu a:hover { color: var(--gold); }
+.mob-close { position: absolute; top: 24px; right: 24px; background: none; border: none; color: var(--gold); font-size: 1.5rem; cursor: pointer; }
+.btn-gold { display: inline-block; padding: 14px 36px; background: var(--gold); color: var(--white); font-family: var(--sans); font-weight: 700; font-size: 0.82rem; letter-spacing: 2.5px; text-transform: uppercase; border: none; cursor: pointer; clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%); }
+
+/* POLE */
+.pole-wrap { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); width: 18px; height: 90px; border-radius: 9px; overflow: hidden; z-index: 200; box-shadow: 0 0 20px rgba(0,0,0,0.6); display: none; }
+@media (min-width: 1500px) { .pole-wrap { display: block; } }
+.pole-inner { width: 100%; height: 300%; background: repeating-linear-gradient(0deg, #cc0000 0px, #cc0000 18px, #fff 18px, #fff 36px, #0033cc 36px, #0033cc 54px); animation: poleSpin 3s linear infinite; }
+@keyframes poleSpin { 0% { transform: translateY(0); } 100% { transform: translateY(-33.33%); } }
+
+/* LEGAL HERO */
+.legal-hero {
+  padding: 150px 0 60px;
+  background: var(--dark-2);
+  border-bottom: 1px solid rgba(204,31,31,0.2);
+}
+.breadcrumb { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); }
+.breadcrumb a { color: var(--gold); transition: opacity 0.2s; }
+.breadcrumb a:hover { opacity: 0.8; }
+.legal-hero h1 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; margin-bottom: 12px; }
+.legal-hero h1 em { color: var(--gold); font-style: italic; }
+.legal-updated { font-size: 0.82rem; color: var(--gray); margin-top: 8px; }
+
+/* LEGAL CONTENT */
+.legal-content { padding: 64px 0 100px; }
+.legal-container { max-width: 800px; }
+.legal-content h2 { font-family: var(--serif); font-size: 1.35rem; font-weight: 700; color: var(--white); margin: 44px 0 14px; padding-bottom: 10px; border-bottom: 1px solid rgba(204,31,31,0.2); }
+.legal-content h2:first-child { margin-top: 0; }
+.legal-content p { font-size: 0.95rem; color: var(--light-gray); line-height: 1.9; margin-bottom: 14px; }
+.legal-content ul { list-style: disc; padding-left: 26px; margin-bottom: 14px; }
+.legal-content ul li { font-size: 0.95rem; color: var(--light-gray); line-height: 1.85; margin-bottom: 6px; }
+.legal-content a { color: var(--gold); text-decoration: underline; }
+.legal-content a:hover { color: var(--gold-light); }
+.legal-content strong { color: var(--white); }
+
+/* FOOTER */
+footer { background: var(--dark-2); padding: 64px 0 28px; border-top: 1px solid rgba(255,255,255,0.06); }
+.foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 44px; margin-bottom: 44px; }
+.foot-brand .logo { margin-bottom: 14px; }
+.foot-logo-img { height: 65px; width: auto; filter: invert(1) hue-rotate(180deg); }
+.foot-brand p { font-size: 0.84rem; color: var(--gray); line-height: 1.82; margin-bottom: 22px; }
+.socials { display: flex; gap: 10px; }
+.soc-btn { width: 36px; height: 36px; border: 1px solid rgba(204,31,31,0.3); display: flex; align-items: center; justify-content: center; color: var(--gray); font-size: 0.82rem; transition: all 0.3s; }
+.soc-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--white); }
+.foot-col h4 { font-family: var(--serif); font-size: 0.97rem; font-weight: 700; color: var(--white); margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid rgba(204,31,31,0.2); }
+.foot-col ul { list-style: none; padding: 0; }
+.foot-col ul li { margin-bottom: 9px; }
+.foot-col ul a { font-size: 0.84rem; color: var(--gray); transition: color 0.3s; text-decoration: none; }
+.foot-col ul a:hover { color: var(--gold); }
+.foot-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 28px; display: flex; align-items: center; justify-content: space-between; font-size: 0.78rem; color: var(--gray); flex-wrap: wrap; gap: 8px; }
+.foot-bottom a { color: var(--gold); }
+
+/* COOKIE BANNER */
+.cookie-banner {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 2000;
+  background: var(--dark-card); border-top: 2px solid rgba(204,31,31,0.35);
+  padding: 18px 32px; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap; box-shadow: 0 -6px 30px rgba(0,0,0,0.5);
+}
+.cookie-banner.visible { display: flex; }
+.cookie-banner p { font-size: 0.86rem; color: var(--light-gray); line-height: 1.6; max-width: 680px; }
+.cookie-banner a { color: var(--gold); text-decoration: underline; }
+.cookie-btns { display: flex; gap: 10px; flex-shrink: 0; }
+.cookie-btn { padding: 9px 22px; font-family: var(--sans); font-weight: 700; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border: none; }
+.cookie-btn-accept { background: var(--gold); color: var(--white); }
+.cookie-btn-accept:hover { background: var(--gold-light); }
+.cookie-btn-decline { background: transparent; border: 1px solid rgba(255,255,255,0.15); color: var(--gray); }
+.cookie-btn-decline:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ACCESSIBILITY */
+.skip-link { position: absolute; top: -100%; left: 0; background: var(--gold); color: var(--white); padding: 10px 20px; z-index: 9999; font-weight: 700; font-size: 0.9rem; text-decoration: underline; }
+.skip-link:focus { top: 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+*:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .foot-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 600px) {
+  .cookie-banner { padding: 16px 20px; }
+  .cookie-btns { width: 100%; }
+  .cookie-btn { flex: 1; text-align: center; }
+}
+@media (max-width: 480px) {
+  .foot-bottom { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="pole-wrap" aria-hidden="true"><div class="pole-inner"></div></div>
+
+<!-- Mobile Menu -->
+<div class="mob-menu" id="mobMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <button class="mob-close" onclick="closeMob()" aria-label="Close navigation menu"><i class="fas fa-times" aria-hidden="true"></i></button>
+  <a href="index.html" onclick="closeMob()">Home</a>
+  <a href="index.html#services" onclick="closeMob()">Services</a>
+  <a href="index.html#pricing" onclick="closeMob()">Pricing</a>
+  <a href="index.html#gallery" onclick="closeMob()">Gallery</a>
+  <a href="barbers.html" onclick="closeMob()">Our Barbers</a>
+  <a href="index.html#location" onclick="closeMob()">Location</a>
+  <a href="tel:+19095253339" class="btn-gold" onclick="closeMob()">Book Now</a>
+</div>
+
+<!-- Nav -->
+<nav id="nav" aria-label="Main navigation">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><img src="new official gshopbarbershop logo.png" alt="G's Shop Barber Shop" class="nav-logo-img"></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="index.html#gallery">Gallery</a></li>
+        <li><a href="barbers.html">Our Barbers</a></li>
+        <li><a href="index.html#location">Location</a></li>
+        <li><a href="tel:+19095253339" class="nav-cta">Book Now</a></li>
+      </ul>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobMenu" onclick="openMob()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+
+<section class="legal-hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span aria-hidden="true"> / </span>
+      <span aria-current="page">Privacy Policy</span>
+    </nav>
+    <h1>Privacy <em>Policy</em></h1>
+    <p class="legal-updated">Last updated: June 13, 2026</p>
+  </div>
+</section>
+
+<section class="legal-content">
+  <div class="container legal-container">
+
+    <h2>1. Introduction</h2>
+    <p>G's Shop Barber Shop ("we," "our," or "us") operates the website at <strong>gshopbarbershop.com</strong>. This Privacy Policy explains what information we collect when you visit our site, how we use it, and your rights regarding that information.</p>
+    <p>By using our website, you agree to the practices described in this policy. If you do not agree, please discontinue use of the site.</p>
+
+    <h2>2. Information We Collect</h2>
+    <p>We collect minimal information. Specifically:</p>
+    <ul>
+      <li><strong>Information you voluntarily provide:</strong> If you contact us by phone or in person, you may share your name and contact details. Our website does not currently include contact forms or account registration.</li>
+      <li><strong>Automatically collected information:</strong> When you visit our site, standard web server logs may record your IP address, browser type, referring page, and pages visited. This data is used only for maintaining site security and diagnosing technical issues.</li>
+      <li><strong>Cookies:</strong> We use cookies to remember your cookie consent preference. Third-party services embedded on our site (see Section 4) may also set their own cookies.</li>
+    </ul>
+
+    <h2>3. How We Use Your Information</h2>
+    <p>We use the limited information we collect to:</p>
+    <ul>
+      <li>Operate and maintain the website</li>
+      <li>Respond to inquiries made by phone or in-person</li>
+      <li>Monitor and improve website performance and security</li>
+      <li>Comply with applicable legal obligations</li>
+    </ul>
+    <p>We do not sell, rent, or share your personal information with third parties for marketing purposes.</p>
+
+    <h2>4. Third-Party Services</h2>
+    <p>Our website uses the following third-party services, which may collect data independently under their own privacy policies:</p>
+    <ul>
+      <li><strong>Google Maps:</strong> An embedded map on our location page is provided by Google. Google may collect data per their <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</li>
+      <li><strong>Google Fonts:</strong> We load fonts from Google's servers, which may log your IP address per Google's <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</li>
+      <li><strong>Font Awesome (cdnjs):</strong> Icon assets are loaded from Cloudflare's CDN, which may log standard access data per <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare's Privacy Policy</a>.</li>
+      <li><strong>GSAP (cdnjs):</strong> Animation library loaded from Cloudflare's CDN under the same terms above.</li>
+    </ul>
+    <p>We encourage you to review the privacy policies of these third-party services directly.</p>
+
+    <h2>5. Cookies</h2>
+    <p>Cookies are small text files stored on your device by your browser. We use the following types of cookies:</p>
+    <ul>
+      <li><strong>Essential cookies:</strong> We store your cookie consent preference (accepted or declined) in your browser's localStorage. This is required for the site to remember your choice.</li>
+      <li><strong>Third-party cookies:</strong> Services such as Google Maps may set cookies when you interact with embedded content. You can control third-party cookies through your browser settings.</li>
+    </ul>
+    <p>You can disable cookies in your browser settings. Note that some site features may not function correctly if cookies are disabled.</p>
+
+    <h2>6. Data Retention</h2>
+    <p>We do not retain personal data beyond what is necessary to fulfill the purposes described in this policy. Server log data is typically retained for up to 30 days. Cookie consent data is stored in your browser until you clear your browsing data.</p>
+
+    <h2>7. California Privacy Rights (CCPA)</h2>
+    <p>If you are a California resident, you have certain rights under the California Consumer Privacy Act (CCPA), including the right to:</p>
+    <ul>
+      <li>Know what personal information we collect and how it is used</li>
+      <li>Request deletion of your personal information</li>
+      <li>Opt out of the sale of your personal information (we do not sell personal information)</li>
+      <li>Non-discrimination for exercising your privacy rights</li>
+    </ul>
+    <p>To exercise these rights, contact us using the information in Section 9 below.</p>
+
+    <h2>8. Children's Privacy</h2>
+    <p>Our website is not directed to children under the age of 13. We do not knowingly collect personal information from children. If you believe a child has provided us with personal information, please contact us and we will promptly delete it.</p>
+
+    <h2>9. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. When we do, we will update the "Last updated" date at the top of this page. We encourage you to review this policy periodically. Continued use of our website after changes constitutes acceptance of the updated policy.</p>
+
+    <h2>10. Contact Us</h2>
+    <p>If you have questions or concerns about this Privacy Policy or our data practices, please contact us:</p>
+    <ul>
+      <li><strong>G's Shop Barber Shop</strong></li>
+      <li>317 E Foothill Blvd, Pomona, CA 91767</li>
+      <li>Phone: <a href="tel:+19095253339">(909) 525-3339</a></li>
+    </ul>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="logo"><img src="new official gshopbarbershop logo.png" alt="G's Shop Barber Shop" class="foot-logo-img"></div>
+        <p>Pomona's trusted barbershop for precision fades, cuts, and beard work. Serving the Inland Empire with pride. Walk-ins always welcome at 317 E Foothill Blvd.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/gshopbarbershop?igsh=M2o2dm9pemg5b2tn" class="soc-btn" aria-label="G's Shop on Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+          <a href="https://www.facebook.com/Gshopbarbershop/" class="soc-btn" aria-label="G's Shop on Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="https://g.co/kgs/Z3hLgCw" class="soc-btn" aria-label="G's Shop on Google" target="_blank" rel="noopener noreferrer"><i class="fab fa-google" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="barbers.html">Our Barbers</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="index.html#services">Haircuts</a></li>
+          <li><a href="index.html#services">Fades &amp; Tapers</a></li>
+          <li><a href="index.html#services">Beard Trims</a></li>
+          <li><a href="index.html#services">Kids Cuts</a></li>
+          <li><a href="index.html#services">Senior Cuts</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="index.html#location">Location</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>&copy; 2025 G's Shop Barber Shop &middot; 317 E Foothill Blvd, Pomona, CA 91767 &middot; <a href="tel:+19095253339">(909) 525-3339</a></p>
+      <p><a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms of Service</a> &middot; Proudly serving Pomona &amp; the Inland Empire</p>
+    </div>
+  </div>
+</footer>
+
+<!-- COOKIE BANNER -->
+<div id="cookieBanner" class="cookie-banner" role="dialog" aria-label="Cookie consent" aria-describedby="cookieDesc">
+  <p id="cookieDesc">We use cookies to improve your browsing experience. By using this site you agree to our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Service</a>.</p>
+  <div class="cookie-btns">
+    <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()">Accept</button>
+    <button class="cookie-btn cookie-btn-decline" onclick="declineCookies()">Decline</button>
+  </div>
+</div>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50); });
+
+function openMob() {
+  const menu = document.getElementById('mobMenu');
+  const btn = document.getElementById('hamburgerBtn');
+  menu.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  btn.setAttribute('aria-expanded', 'true');
+  menu.querySelector('.mob-close').focus();
+}
+function closeMob() {
+  const menu = document.getElementById('mobMenu');
+  const btn = document.getElementById('hamburgerBtn');
+  menu.classList.remove('open');
+  document.body.style.overflow = '';
+  btn.setAttribute('aria-expanded', 'false');
+  btn.focus();
+}
+document.getElementById('mobMenu').addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') { closeMob(); return; }
+  if (e.key !== 'Tab') return;
+  const focusable = Array.from(this.querySelectorAll('a[href], button'));
+  const first = focusable[0], last = focusable[focusable.length - 1];
+  if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
+  else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } }
+});
+
+(function() {
+  if (!localStorage.getItem('cookieConsent')) {
+    document.getElementById('cookieBanner').classList.add('visible');
+  }
+})();
+function acceptCookies() {
+  localStorage.setItem('cookieConsent', 'accepted');
+  document.getElementById('cookieBanner').classList.remove('visible');
+}
+function declineCookies() {
+  localStorage.setItem('cookieConsent', 'declined');
+  document.getElementById('cookieBanner').classList.remove('visible');
+}
+</script>
+</body>
+</html>

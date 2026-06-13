@@ -320,6 +320,28 @@ footer { background: var(--dark-2); padding: 64px 0 28px; border-top: 1px solid 
   .cta-strip .cta-btns { flex-direction: column; align-items: center; }
   .foot-bottom { flex-direction: column; text-align: center; }
 }
+
+/* COOKIE BANNER */
+.cookie-banner {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 2000;
+  background: var(--dark-card); border-top: 2px solid rgba(204,31,31,0.35);
+  padding: 18px 32px; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap; box-shadow: 0 -6px 30px rgba(0,0,0,0.5);
+}
+.cookie-banner.visible { display: flex; }
+.cookie-banner p { font-size: 0.86rem; color: var(--light-gray); line-height: 1.6; max-width: 680px; }
+.cookie-banner a { color: var(--gold); text-decoration: underline; }
+.cookie-btns { display: flex; gap: 10px; flex-shrink: 0; }
+.cookie-btn { padding: 9px 22px; font-family: var(--sans); font-weight: 700; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border: none; }
+.cookie-btn-accept { background: var(--gold); color: var(--white); }
+.cookie-btn-accept:hover { background: var(--gold-light); }
+.cookie-btn-decline { background: transparent; border: 1px solid rgba(255,255,255,0.15); color: var(--gray); }
+.cookie-btn-decline:hover { border-color: var(--gold); color: var(--gold); }
+@media (max-width: 600px) {
+  .cookie-banner { padding: 16px 20px; }
+  .cookie-btns { width: 100%; }
+  .cookie-btn { flex: 1; text-align: center; }
+}
 </style>
 </head>
 <body>
@@ -733,7 +755,7 @@ footer { background: var(--dark-2); padding: 64px 0 28px; border-top: 1px solid 
     </div>
     <div class="foot-bottom">
       <p>&copy; 2025 G's Shop Barber Shop &middot; 317 E Foothill Blvd, Pomona, CA 91767 &middot; <a href="tel:+19095253339">(909) 525-3339</a></p>
-      <p>Proudly serving Pomona &amp; the Inland Empire</p>
+      <p><a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms of Service</a> &middot; Proudly serving Pomona &amp; the Inland Empire</p>
     </div>
   </div>
 </footer>
@@ -800,6 +822,29 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
   });
 });
+
+(function() {
+  if (!localStorage.getItem('cookieConsent')) {
+    document.getElementById('cookieBanner').classList.add('visible');
+  }
+})();
+function acceptCookies() {
+  localStorage.setItem('cookieConsent', 'accepted');
+  document.getElementById('cookieBanner').classList.remove('visible');
+}
+function declineCookies() {
+  localStorage.setItem('cookieConsent', 'declined');
+  document.getElementById('cookieBanner').classList.remove('visible');
+}
 </script>
+
+<!-- COOKIE BANNER -->
+<div id="cookieBanner" class="cookie-banner" role="dialog" aria-label="Cookie consent" aria-describedby="cookieDesc">
+  <p id="cookieDesc">We use cookies to improve your browsing experience. By using this site you agree to our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Service</a>.</p>
+  <div class="cookie-btns">
+    <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()">Accept</button>
+    <button class="cookie-btn cookie-btn-decline" onclick="declineCookies()">Decline</button>
+  </div>
+</div>
 </body>
 </html>
