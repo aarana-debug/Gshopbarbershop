@@ -122,7 +122,7 @@ nav.scrolled { background: rgba(10,10,10,0.97); padding: 13px 0; box-shadow: 0 4
 .nav-cta { padding: 10px 22px !important; background: var(--gold) !important; color: var(--dark) !important; font-weight: 700 !important; clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%); transition: background 0.3s !important; }
 .nav-cta::after { display: none !important; }
 .nav-cta:hover { background: var(--gold-light) !important; }
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
 .hamburger span { display: block; width: 26px; height: 2px; background: var(--gold); }
 
 /* MOB MENU */
@@ -299,6 +299,25 @@ footer { background: var(--dark-2); padding: 64px 0 28px; border-top: 1px solid 
 .foot-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 28px; display: flex; align-items: center; justify-content: space-between; font-size: 0.78rem; color: var(--gray); flex-wrap: wrap; gap: 8px; }
 .foot-bottom a { color: var(--gold); }
 
+/* ACCESSIBILITY */
+.skip-link {
+  position: absolute; top: -100%; left: 0;
+  background: var(--gold); color: var(--white);
+  padding: 10px 20px; z-index: 9999;
+  font-weight: 700; font-size: 0.9rem;
+  text-decoration: underline;
+}
+.skip-link:focus { top: 0; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+*:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
 /* RESPONSIVE */
 @media (max-width: 1024px) {
   .featured-inner { gap: 44px; }
@@ -325,11 +344,13 @@ footer { background: var(--dark-2); padding: 64px 0 28px; border-top: 1px solid 
 </head>
 <body>
 
-<div class="pole-wrap"><div class="pole-inner"></div></div>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<div class="pole-wrap" aria-hidden="true"><div class="pole-inner"></div></div>
 
 <!-- Mobile Menu -->
-<div class="mob-menu" id="mobMenu">
-  <button class="mob-close" onclick="closeMob()"><i class="fas fa-times"></i></button>
+<div class="mob-menu" id="mobMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <button class="mob-close" onclick="closeMob()" aria-label="Close navigation menu"><i class="fas fa-times" aria-hidden="true"></i></button>
   <a href="index.html" onclick="closeMob()">Home</a>
   <a href="index.html#services" onclick="closeMob()">Services</a>
   <a href="index.html#pricing" onclick="closeMob()">Pricing</a>
@@ -340,7 +361,7 @@ footer { background: var(--dark-2); padding: 64px 0 28px; border-top: 1px solid 
 </div>
 
 <!-- Nav -->
-<nav id="nav">
+<nav id="nav" aria-label="Main navigation">
   <div class="container">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo"><img src="new official gshopbarbershop logo.png" alt="G's Shop Barber Shop" class="nav-logo-img"></a>
@@ -353,23 +374,25 @@ footer { background: var(--dark-2); padding: 64px 0 28px; border-top: 1px solid 
         <li><a href="index.html#location">Location</a></li>
         <li><a href="tel:+19095253339" class="nav-cta">Book Now</a></li>
       </ul>
-      <div class="hamburger" onclick="openMob()">
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobMenu" onclick="openMob()">
         <span></span><span></span><span></span>
-      </div>
+      </button>
     </div>
   </div>
 </nav>
 
+<main id="main-content">
+
 <!-- PAGE HERO -->
 <section class="page-hero">
-  <div class="page-hero-bg"></div>
-  <div class="page-hero-overlay"></div>
+  <div class="page-hero-bg" aria-hidden="true"></div>
+  <div class="page-hero-overlay" aria-hidden="true"></div>
   <div class="page-hero-content fade-up">
-    <div class="breadcrumb">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
       <a href="index.html">Home</a>
-      <span><i class="fas fa-chevron-right" style="font-size:0.6rem"></i></span>
-      <span>Our Barbers</span>
-    </div>
+      <span aria-hidden="true"><i class="fas fa-chevron-right" style="font-size:0.6rem"></i></span>
+      <span aria-current="page">Our Barbers</span>
+    </nav>
     <span class="section-label">The Team Behind the Cuts</span>
     <h1>Meet Our <em>Barbers</em></h1>
     <p>Skilled hands, sharp lines, and a passion for the craft. Get to know the talent behind every cut at G's Shop in Pomona, CA.</p>
@@ -377,7 +400,7 @@ footer { background: var(--dark-2); padding: 64px 0 28px; border-top: 1px solid 
 </section>
 
 <!-- Marquee -->
-<div class="marquee">
+<div class="marquee" aria-hidden="true">
   <div class="marquee-track">
     <span><i class="fas fa-cut"></i>Master Barbers</span>
     <span><i class="fas fa-star"></i>5-Star Rated</span>
@@ -396,25 +419,25 @@ footer { background: var(--dark-2); padding: 64px 0 28px; border-top: 1px solid 
   </div>
 </div>
 
-<!-- FEATURED BARBER: NATE -->
-<section class="featured">
+<!-- FEATURED BARBER: GIO -->
+<section class="featured" aria-labelledby="featured-heading">
   <div class="container">
     <div class="section-header fade-up" style="margin-bottom:72px">
       <span class="section-label">Our Featured Barber</span>
-      <h2 class="section-title">The Craftsman</h2>
-      <div class="divider"><i class="fas fa-cut"></i></div>
+      <h2 id="featured-heading" class="section-title">The Craftsman</h2>
+      <div class="divider" aria-hidden="true"><i class="fas fa-cut"></i></div>
     </div>
     <div class="featured-inner">
       <div class="featured-img-wrap fade-up">
-        <div class="featured-tag">Master Barber</div>
-        <img src="barber gio.jpg" alt="Gio - Master Barber at G's Shop Pomona CA" class="featured-img" loading="lazy">
+        <div class="featured-tag" aria-hidden="true">Master Barber</div>
+        <img src="barber gio.jpg" alt="Giovanni Pena, Owner and Master Barber at G's Shop Barber Shop in Pomona CA" class="featured-img" loading="lazy">
       </div>
       <div class="fade-up">
-        <div class="featured-role">Owner & Master Barber · G's Shop Barber Shop</div>
+        <div class="featured-role">Owner &amp; Master Barber · G's Shop Barber Shop</div>
         <h2 class="featured-name">Giovanni Pena</h2>
         <p class="featured-bio">Gio is the Master Barber at G's Shop and the creative force behind some of Pomona's sharpest cuts. With a deep passion for the craft and an eye for modern styles, Gio has built a loyal following across the Inland Empire — clients don't just come back, they bring everyone they know.</p>
         <p class="featured-bio">From flawless skin fades to sculpted beards, every cut Gio delivers is intentional, precise, and personal. He takes the time to understand your style and makes sure you leave looking exactly how you envisioned.</p>
-        <div class="spec-title">Specialties</div>
+        <p class="spec-title">Specialties</p>
         <div class="spec-tags">
           <span class="spec-tag">Skin Fades</span>
           <span class="spec-tag">Taper Fades</span>
@@ -424,8 +447,8 @@ footer { background: var(--dark-2); padding: 64px 0 28px; border-top: 1px solid 
           <span class="spec-tag">Bald Fades</span>
           <span class="spec-tag">Classic Cuts</span>
         </div>
-        <div class="barber-stats">
-          <div class="b-stat"><div class="num">5★</div><div class="lbl">Client Rating</div></div>
+        <div class="barber-stats" aria-label="Barber highlights">
+          <div class="b-stat"><div class="num" aria-label="5-star">5★</div><div class="lbl">Client Rating</div></div>
           <div class="b-stat"><div class="num">400+</div><div class="lbl">Happy Clients</div></div>
           <div class="b-stat"><div class="num">10+</div><div class="lbl">Years Experience</div></div>
         </div>
@@ -435,39 +458,39 @@ footer { background: var(--dark-2); padding: 64px 0 28px; border-top: 1px solid 
 </section>
 
 <!-- SKILLS SECTION -->
-<section class="skills">
+<section class="skills" aria-labelledby="skills-heading">
   <div class="container">
     <div class="skills-inner">
       <div class="skills-text fade-up">
-        <span class="section-label">Craft & Expertise</span>
-        <h2 class="section-title">Skills That<br>Speak for Themselves</h2>
+        <span class="section-label">Craft &amp; Expertise</span>
+        <h2 id="skills-heading" class="section-title">Skills That<br>Speak for Themselves</h2>
         <p>Every barber at G's Shop Barber Shop is trained, experienced, and passionate. From beginner-friendly classic cuts to complex fade transitions, our team has the range to handle any style request with confidence.</p>
         <div class="skill-bar-list">
           <div class="skill-item">
-            <div class="skill-top"><span class="name">Fade Cuts & Tapers</span><span class="pct">98%</span></div>
-            <div class="skill-track"><div class="skill-fill" style="--w:0.98"></div></div>
+            <div class="skill-top"><span class="name">Fade Cuts &amp; Tapers</span><span class="pct" aria-label="98 percent">98%</span></div>
+            <div class="skill-track" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" aria-label="Fade Cuts and Tapers proficiency"><div class="skill-fill" style="--w:0.98"></div></div>
           </div>
           <div class="skill-item">
-            <div class="skill-top"><span class="name">Beard Sculpting</span><span class="pct">95%</span></div>
-            <div class="skill-track"><div class="skill-fill" style="--w:0.95"></div></div>
+            <div class="skill-top"><span class="name">Beard Sculpting</span><span class="pct" aria-label="95 percent">95%</span></div>
+            <div class="skill-track" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="Beard Sculpting proficiency"><div class="skill-fill" style="--w:0.95"></div></div>
           </div>
           <div class="skill-item">
-            <div class="skill-top"><span class="name">Classic Haircuts</span><span class="pct">97%</span></div>
-            <div class="skill-track"><div class="skill-fill" style="--w:0.97"></div></div>
+            <div class="skill-top"><span class="name">Classic Haircuts</span><span class="pct" aria-label="97 percent">97%</span></div>
+            <div class="skill-track" role="progressbar" aria-valuenow="97" aria-valuemin="0" aria-valuemax="100" aria-label="Classic Haircuts proficiency"><div class="skill-fill" style="--w:0.97"></div></div>
           </div>
           <div class="skill-item">
-            <div class="skill-top"><span class="name">Line-Ups & Edges</span><span class="pct">99%</span></div>
-            <div class="skill-track"><div class="skill-fill" style="--w:0.99"></div></div>
+            <div class="skill-top"><span class="name">Line-Ups &amp; Edges</span><span class="pct" aria-label="99 percent">99%</span></div>
+            <div class="skill-track" role="progressbar" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100" aria-label="Line-Ups and Edges proficiency"><div class="skill-fill" style="--w:0.99"></div></div>
           </div>
           <div class="skill-item">
-            <div class="skill-top"><span class="name">Kids & Senior Cuts</span><span class="pct">96%</span></div>
-            <div class="skill-track"><div class="skill-fill" style="--w:0.96"></div></div>
+            <div class="skill-top"><span class="name">Kids &amp; Senior Cuts</span><span class="pct" aria-label="96 percent">96%</span></div>
+            <div class="skill-track" role="progressbar" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100" aria-label="Kids and Senior Cuts proficiency"><div class="skill-fill" style="--w:0.96"></div></div>
           </div>
         </div>
       </div>
       <div class="skills-img fade-up">
-        <img src="Untitled design (4).png" alt="Barber expertise at G's Shop Barber Shop Pomona CA" loading="lazy">
-        <div class="skills-img-tag">
+        <img src="Untitled design (4).png" alt="Barber at work at G's Shop Barber Shop in Pomona CA" loading="lazy">
+        <div class="skills-img-tag" aria-hidden="true">
           <div class="big">10+</div>
           <div class="sm">Years Serving Pomona</div>
         </div>
@@ -477,112 +500,108 @@ footer { background: var(--dark-2); padding: 64px 0 28px; border-top: 1px solid 
 </section>
 
 <!-- TEAM CARDS -->
-<section class="team">
+<section class="team" aria-labelledby="team-heading">
   <div class="container">
     <div class="section-header fade-up">
       <span class="section-label">The Full Squad</span>
-      <h2 class="section-title">Our Barber Team</h2>
-      <div class="divider"><i class="fas fa-users"></i></div>
+      <h2 id="team-heading" class="section-title">Our Barber Team</h2>
+      <div class="divider" aria-hidden="true"><i class="fas fa-users"></i></div>
     </div>
     <div class="team-grid">
-      <!-- Gio (moved to first) -->
-      <div class="team-card fade-up">
+      <article class="team-card fade-up">
         <div class="team-card-img">
-          <img src="barber gio.jpg" alt="Gio - Owner & Master Barber at G's Shop Pomona CA" loading="lazy">
-          <div class="team-card-overlay"></div>
+          <img src="barber gio.jpg" alt="Giovanni Pena, Owner and Master Barber at G's Shop" loading="lazy">
+          <div class="team-card-overlay" aria-hidden="true"></div>
         </div>
         <div class="team-card-body">
-          <div class="team-card-role">Owner & Master Barber</div>
-          <div class="team-card-name">Giovanni Pena</div>
+          <div class="team-card-role">Owner &amp; Master Barber</div>
+          <h3 class="team-card-name">Giovanni Pena</h3>
           <p class="team-card-bio">Modern styles, sharp fades, and a passion for the craft. Gio brings energy and expertise to every cut — clients keep coming back.</p>
-          <div class="team-card-tags">
+          <div class="team-card-tags" aria-label="Specialties">
             <span class="tc-tag">Skin Fades</span>
             <span class="tc-tag">Beard Work</span>
             <span class="tc-tag">Modern Styles</span>
           </div>
         </div>
-      </div>
-      <!-- Nate (role simplified to Barber) -->
-      <div class="team-card fade-up">
+      </article>
+      <article class="team-card fade-up">
         <div class="team-card-img">
-          <img src="nate pic.png" alt="Nate - Barber at G's Shop Pomona CA" loading="lazy">
-          <div class="team-card-overlay"></div>
+          <img src="nate pic.png" alt="Nate, Barber at G's Shop" loading="lazy">
+          <div class="team-card-overlay" aria-hidden="true"></div>
         </div>
         <div class="team-card-body">
           <div class="team-card-role">Barber</div>
-          <div class="team-card-name">Nate</div>
+          <h3 class="team-card-name">Nate</h3>
           <p class="team-card-bio">Pomona's go-to for flawless fades and precise beard work. Steady hands, sharp eye, and results that speak for themselves.</p>
-          <div class="team-card-tags">
+          <div class="team-card-tags" aria-label="Specialties">
             <span class="tc-tag">Fades</span>
             <span class="tc-tag">Beards</span>
             <span class="tc-tag">Tapers</span>
           </div>
         </div>
-      </div>
-      <!-- Alex -->
-      <div class="team-card fade-up">
+      </article>
+      <article class="team-card fade-up">
         <div class="team-card-img">
-          <img src="Barber Alex.jpg" alt="Alex - Barber at G's Shop Pomona CA" loading="lazy">
-          <div class="team-card-overlay"></div>
+          <img src="Barber Alex.jpg" alt="Alex, Barber at G's Shop" loading="lazy">
+          <div class="team-card-overlay" aria-hidden="true"></div>
         </div>
         <div class="team-card-body">
           <div class="team-card-role">Barber</div>
-          <div class="team-card-name">Alex</div>
+          <h3 class="team-card-name">Alex</h3>
           <p class="team-card-bio">Clean lines, crisp edges, and a relaxed chair experience. Alex brings consistency and skill to every client who sits with him.</p>
-          <div class="team-card-tags">
+          <div class="team-card-tags" aria-label="Specialties">
             <span class="tc-tag">Line-Ups</span>
             <span class="tc-tag">Classic Cuts</span>
             <span class="tc-tag">Fades</span>
           </div>
         </div>
-      </div>
-      <!-- Luis -->
-      <div class="team-card fade-up">
+      </article>
+      <article class="team-card fade-up">
         <div class="team-card-img">
-          <img src="Barber Luis.jpg" alt="Luis - Barber at G's Shop Pomona CA" loading="lazy">
-          <div class="team-card-overlay"></div>
+          <img src="Barber Luis.jpg" alt="Luis, Barber at G's Shop" loading="lazy">
+          <div class="team-card-overlay" aria-hidden="true"></div>
         </div>
         <div class="team-card-body">
           <div class="team-card-role">Barber</div>
-          <div class="team-card-name">Luis</div>
+          <h3 class="team-card-name">Luis</h3>
           <p class="team-card-bio">From kids to seniors, Luis makes every client feel at home. Known for his smooth tapers and clean, precise finishes.</p>
-          <div class="team-card-tags">
+          <div class="team-card-tags" aria-label="Specialties">
             <span class="tc-tag">Tapers</span>
             <span class="tc-tag">Kids Cuts</span>
             <span class="tc-tag">All Ages</span>
           </div>
         </div>
-      </div>
+      </article>
     </div>
   </div>
 </section>
 
 <!-- WHY BOOK WITH US -->
-<section class="why">
+<section class="why" aria-labelledby="why-heading">
   <div class="container">
     <div class="section-header fade-up">
       <span class="section-label">Why Choose G's Shop Barber Shop</span>
-      <h2 class="section-title">The G's Shop Difference</h2>
-      <div class="divider"><i class="fas fa-star"></i></div>
+      <h2 id="why-heading" class="section-title">The G's Shop Difference</h2>
+      <div class="divider" aria-hidden="true"><i class="fas fa-star"></i></div>
     </div>
     <div class="why-grid">
       <div class="why-card fade-up">
-        <div class="why-icon"><i class="fas fa-award"></i></div>
+        <div class="why-icon" aria-hidden="true"><i class="fas fa-award"></i></div>
         <h3>Proven Excellence</h3>
         <p>Consistent 5-star reviews from clients across Pomona, Ontario, Claremont, and the Inland Empire.</p>
       </div>
       <div class="why-card fade-up">
-        <div class="why-icon"><i class="fas fa-door-open"></i></div>
+        <div class="why-icon" aria-hidden="true"><i class="fas fa-door-open"></i></div>
         <h3>Walk-Ins Welcome</h3>
         <p>No appointment? No problem. Come in and we'll take care of you when there's an open chair.</p>
       </div>
       <div class="why-card fade-up">
-        <div class="why-icon"><i class="fas fa-dollar-sign"></i></div>
+        <div class="why-icon" aria-hidden="true"><i class="fas fa-dollar-sign"></i></div>
         <h3>Honest Pricing</h3>
         <p>Fair, transparent rates with no hidden fees. Premium results without premium price gouging.</p>
       </div>
       <div class="why-card fade-up">
-        <div class="why-icon"><i class="fas fa-users"></i></div>
+        <div class="why-icon" aria-hidden="true"><i class="fas fa-users"></i></div>
         <h3>For Everyone</h3>
         <p>Men, women, kids, seniors — every age, every style. G's Shop is a space for the whole community.</p>
       </div>
@@ -591,22 +610,24 @@ footer { background: var(--dark-2); padding: 64px 0 28px; border-top: 1px solid 
 </section>
 
 <!-- BOOK CTA -->
-<section class="book-cta">
+<section class="book-cta" aria-labelledby="cta-heading">
   <div class="book-cta-inner fade-up">
     <span class="section-label" style="font-size:1.4rem">Ready for Your Best Cut?</span>
-    <h2>Book with <em>Our Team</em> Today</h2>
+    <h2 id="cta-heading">Book with <em>Our Team</em> Today</h2>
     <p>Walk in or call ahead to request your preferred barber. We're at 317 E Foothill Blvd in Pomona, CA — Monday through Saturday.</p>
     <div class="book-btns">
-      <a href="tel:+19095253339" class="btn-gold"><i class="fas fa-phone" style="margin-right:8px"></i>Call (909) 525-3339</a>
+      <a href="tel:+19095253339" class="btn-gold"><i class="fas fa-phone" aria-hidden="true" style="margin-right:8px"></i>Call (909) 525-3339</a>
       <a href="index.html" class="btn-outline">Back to Home</a>
     </div>
     <div class="book-detail">
-      <div class="book-detail-item"><i class="fas fa-map-marker-alt"></i><span>317 E Foothill Blvd, Pomona, CA</span></div>
-      <div class="book-detail-item"><i class="fas fa-clock"></i><span>Mon–Fri 9AM–6PM · Sat 9AM–4PM · Sun 9:30AM–3PM</span></div>
-      <div class="book-detail-item"><i class="fas fa-star"></i><span>5-Star Google Rated</span></div>
+      <div class="book-detail-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i><span>317 E Foothill Blvd, Pomona, CA</span></div>
+      <div class="book-detail-item"><i class="fas fa-clock" aria-hidden="true"></i><span>Mon–Fri 9AM–6PM · Sat 9AM–4PM · Sun 9:30AM–3PM</span></div>
+      <div class="book-detail-item"><i class="fas fa-star" aria-hidden="true"></i><span>5-Star Google Rated</span></div>
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
@@ -616,9 +637,9 @@ footer { background: var(--dark-2); padding: 64px 0 28px; border-top: 1px solid 
         <div class="logo"><img src="new official gshopbarbershop logo.png" alt="G's Shop Barber Shop" class="foot-logo-img"></div>
         <p>Pomona's trusted barbershop for precision fades, cuts, and beard work. Serving the Inland Empire with pride. Walk-ins always welcome.</p>
         <div class="socials">
-          <a href="#" class="soc-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="soc-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="soc-btn" aria-label="Google"><i class="fab fa-google"></i></a>
+          <a href="https://www.instagram.com/gshopbarbershop?igsh=M2o2dm9pemg5b2tn" class="soc-btn" aria-label="G's Shop on Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+          <a href="https://www.facebook.com/Gshopbarbershop/" class="soc-btn" aria-label="G's Shop on Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="https://g.co/kgs/Z3hLgCw" class="soc-btn" aria-label="G's Shop on Google" target="_blank" rel="noopener noreferrer"><i class="fab fa-google" aria-hidden="true"></i></a>
         </div>
       </div>
       <div class="foot-col">
@@ -635,7 +656,7 @@ footer { background: var(--dark-2); padding: 64px 0 28px; border-top: 1px solid 
         <h4>Services</h4>
         <ul>
           <li><a href="index.html#services">Haircuts</a></li>
-          <li><a href="index.html#services">Fades & Tapers</a></li>
+          <li><a href="index.html#services">Fades &amp; Tapers</a></li>
           <li><a href="index.html#services">Beard Trims</a></li>
           <li><a href="index.html#services">Kids Cuts</a></li>
           <li><a href="index.html#services">Senior Cuts</a></li>
@@ -660,19 +681,16 @@ footer { background: var(--dark-2); padding: 64px 0 28px; border-top: 1px solid 
 </footer>
 
 <script>
-// Nav scroll
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// Scroll reveal + skill bars
 const io = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
     if (e.isIntersecting) {
       setTimeout(() => {
         e.target.classList.add('visible');
-        // Animate skill bars inside revealed element
         e.target.querySelectorAll('.skill-fill').forEach(bar => {
           const w = getComputedStyle(bar).getPropertyValue('--w') || bar.style.getPropertyValue('--w');
           bar.style.transform = `scaleX(${parseFloat(w) || 1})`;
@@ -685,15 +703,36 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
 
-// Mobile menu
 function openMob() {
-  document.getElementById('mobMenu').classList.add('open');
+  const menu = document.getElementById('mobMenu');
+  const btn = document.getElementById('hamburgerBtn');
+  menu.classList.add('open');
   document.body.style.overflow = 'hidden';
+  btn.setAttribute('aria-expanded', 'true');
+  menu.querySelector('.mob-close').focus();
 }
+
 function closeMob() {
-  document.getElementById('mobMenu').classList.remove('open');
+  const menu = document.getElementById('mobMenu');
+  const btn = document.getElementById('hamburgerBtn');
+  menu.classList.remove('open');
   document.body.style.overflow = '';
+  btn.setAttribute('aria-expanded', 'false');
+  btn.focus();
 }
+
+document.getElementById('mobMenu').addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') { closeMob(); return; }
+  if (e.key !== 'Tab') return;
+  const focusable = Array.from(this.querySelectorAll('a[href], button'));
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (e.shiftKey) {
+    if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+  } else {
+    if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+});
 </script>
 </body>
 </html>
